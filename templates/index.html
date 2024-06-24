@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Mineral Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <h1>Mineral Classifier</h1>
+    <form method="post">
+      <h2>Query by Latitude and Longitude</h2>
+      <input type="hidden" name="query_type" value="latlon">
+      <label for="latitude">Latitude:</label>
+      <input type="text" id="latitude" name="latitude" required>
+      <label for="longitude">Longitude:</label>
+      <input type="text" id="longitude" name="longitude" required>
+      <input type="submit" value="Submit">
+    </form>
+    <form method="post">
+      <h2>Query by City Name</h2>
+      <input type="hidden" name="query_type" value="city">
+      <label for="city_name">City Name:</label>
+      <input type="text" id="city_name" name="city_name" required>
+      <input type="submit" value="Submit">
+    </form>
+    {% if result %}
+    <h2>Result</h2>
+    <div>
+      {{ result | safe }}
+    </div>
+    {% endif %}
+  </body>
+</html>
